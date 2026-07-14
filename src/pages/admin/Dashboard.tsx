@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { StatCard } from '../../components/admin/StatCard';
 import { AdminCard } from '../../components/admin/AdminCard';
-import { Package, MessageSquare, Clock, Activity, ArrowRight, Settings } from 'lucide-react';
+import { Package, MessageSquare, ArrowRight, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
         <h1 className="text-2xl font-bold text-slate-900">Dashboard Overview</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <StatCard 
           title="Total Products" 
           value={isLoading ? '-' : stats.productsCount} 
@@ -79,17 +79,6 @@ export default function AdminDashboard() {
           title="Total Inquiries" 
           value={isLoading ? '-' : stats.inquiryCount} 
           icon={MessageSquare} 
-        />
-        <StatCard 
-          title="Active Sessions" 
-          value="1" 
-          icon={Activity} 
-          trend={{ value: '100%', positive: true }}
-        />
-        <StatCard 
-          title="Last Update" 
-          value="Just now" 
-          icon={Clock} 
         />
       </div>
 
