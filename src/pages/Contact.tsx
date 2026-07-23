@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import toast from 'react-hot-toast';
-import { MapPin, Phone, Mail, Loader2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Loader2, MessageCircle, Send, ExternalLink, Copy } from 'lucide-react';
 
 import { Section } from '../components/ui/Section';
 import { Input } from '../components/ui/Input';
@@ -132,7 +132,30 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-slate-900 mb-1">Phone</h4>
-                  <p className="text-slate-600">{settings?.contact_phone || '+251 935 199 119'}</p>
+                  <div className="flex items-center gap-2 text-slate-600">
+                    <a 
+                      href={`tel:${settings?.contact_phone ? settings.contact_phone.replace(/\\s+/g, '') : '+251935199119'}`} 
+                      className="flex items-center gap-1.5 hover:text-primary hover:underline transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded cursor-pointer"
+                      aria-label="Call our phone number"
+                      target="_self"
+                      rel="noopener"
+                    >
+                      {settings?.contact_phone || '+251 935 199 119'}
+                      <ExternalLink size={14} className="opacity-70" />
+                    </a>
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(settings?.contact_phone || '+251 935 199 119');
+                        toast.success('Phone number copied');
+                      }}
+                      className="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer flex-shrink-0"
+                      title="Copy to clipboard"
+                      aria-label="Copy phone number"
+                      type="button"
+                    >
+                      <Copy size={16} />
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -142,10 +165,62 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-slate-900 mb-1">Email</h4>
-                  <p className="text-slate-600">{settings?.contact_email || 'moscon.engineering@gmail.com'}</p>
+                  <div className="flex items-center gap-2 text-slate-600">
+                    <a 
+                      href={`mailto:${settings?.contact_email || 'moscon.engineering@gmail.com'}`}
+                      className="flex items-center gap-1.5 hover:text-primary hover:underline transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded cursor-pointer"
+                      aria-label="Send us an email"
+                      title="Opens your email application"
+                      target="_self"
+                      rel="noopener"
+                    >
+                      {settings?.contact_email || 'moscon.engineering@gmail.com'}
+                      <ExternalLink size={14} className="opacity-70" />
+                    </a>
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(settings?.contact_email || 'moscon.engineering@gmail.com');
+                        toast.success('Email copied');
+                      }}
+                      className="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 cursor-pointer flex-shrink-0"
+                      title="Copy to clipboard"
+                      aria-label="Copy email address"
+                      type="button"
+                    >
+                      <Copy size={16} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 mb-12"
+            >
+              <a 
+                href="https://wa.me/251935199119?text=Hello%20MO'sCON%20Engineering" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md w-full sm:w-1/2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Contact us on WhatsApp"
+              >
+                <MessageCircle size={20} />
+                <span className="font-medium">WhatsApp</span>
+              </a>
+              <a 
+                href="https://t.me/moscon_engineering" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md w-full sm:w-1/2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Contact MO'SCON on Telegram"
+              >
+                <Send size={20} />
+                <span className="font-medium">Telegram</span>
+              </a>
+            </motion.div>
             
             <div>
               <h4 className="text-lg font-bold text-slate-900 mb-4">Legal & Administrative</h4>
