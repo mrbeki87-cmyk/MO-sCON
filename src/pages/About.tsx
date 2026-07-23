@@ -9,7 +9,7 @@ export default function About() {
     <div className="w-full">
       <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&fm=webp&w=1920"
             alt="Corporate building"
             className="w-full h-full object-cover opacity-40"
@@ -17,9 +17,9 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
         </div>
-        
+
         <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -27,7 +27,7 @@ export default function About() {
           >
             About MO'sCON
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -40,7 +40,7 @@ export default function About() {
 
       <Section bgClassName="bg-white">
         <div className="max-w-4xl mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -51,7 +51,7 @@ export default function About() {
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Who We Are</h2>
               <div className="prose prose-lg text-slate-600 max-w-none space-y-4">
                 <p>
-                  MO'sCON Engineering & Trading is a forward-thinking company specializing in delivering advanced construction finishing solutions. Though newly established, we are driven by a strong commitment to quality, precision, and innovation across every project we handle.
+                  MO'sCON Engineering & Trading PLC is a specialized engineering and trading company delivering innovative construction finishing and infrastructure solutions for commercial, institutional, industrial, and sports facilities. We are committed to providing high-quality products and integrated systems that enhance the functionality, durability, and aesthetics of modern buildings
                 </p>
                 <p>
                   We serve clients seeking modern, durable, and performance-based finishing systems for commercial, institutional, and industrial buildings in collaboration with manufacturers abroad.
@@ -63,14 +63,14 @@ export default function About() {
               <motion.div variants={fadeIn}>
                 <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  To become a trusted name in construction finishing by offering reliable, innovative, and client-focused solutions.
+                  Our team combines industry knowledge, technical expertise, and a commitment to excellence. We work closely with architects, consultants, contractors, government institutions, and private developers to deliver tailored solutions with precision, reliability, and a strong focus on quality and client satisfaction.
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn}>
                 <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  To deliver excellence in finishing works by combining technical expertise, quality materials, and a customer-first approach.
+                  At MO'sCON, we understand that every project demands precision, consistency, and timely execution. We are committed to delivering reliable solutions on schedule without compromising quality, ensuring that every product and service consistently meets the highest standards of performance, safety, and client satisfaction.
                 </p>
               </motion.div>
             </div>
