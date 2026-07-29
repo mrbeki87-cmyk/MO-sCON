@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Building2, HardHat, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Building2, HardHat, ShieldCheck, Users, Server, Volume2, Grid, Trophy, Layout, Columns } from 'lucide-react';
 import { Section } from '../components/ui/Section';
 import { ProductCard } from '../components/ui/ProductCard';
 import { LazyImage } from '../components/ui/LazyImage';
@@ -11,10 +11,41 @@ import { supabase } from '../lib/supabase';
 import { type Product } from '../types';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
+const heroProducts = [
+  { id: 'public-seating', title: 'Public Seating', subtitle: 'Premium Comfort', icon: Users, color: 'primary' },
+  { id: 'data-center', title: 'Data Center', subtitle: 'Advanced Infrastructure', icon: Server, color: 'secondary' },
+  { id: 'acoustic', title: 'Acoustic Solutions', subtitle: 'Sound Control', icon: Volume2, color: 'primary' },
+  { id: 'raised-floor', title: 'Raised Access Flooring', subtitle: 'Premium Systems', icon: Grid, color: 'secondary' },
+  { id: 'sports', title: 'Sports Infrastructure', subtitle: 'Professional Grade', icon: Trophy, color: 'primary' },
+  { id: 'field', title: 'Field Systems', subtitle: 'Durable Surfaces', icon: Layout, color: 'secondary' },
+  { id: 'toilet', title: 'Toilet Partition', subtitle: 'Modern Washrooms', icon: Columns, color: 'primary' }
+];
+
+const cardSlots = [
+  // Slot 0: Top left (always visible)
+  { className: "absolute top-4 -left-4 md:top-10 md:-left-12 z-20", delay: 0, yOffset: -10, duration: 4 },
+  // Slot 1: Bottom right (always visible)
+  { className: "absolute bottom-10 -right-4 md:bottom-20 md:-right-12 z-20", delay: 1, yOffset: 10, duration: 5 },
+  // Slot 2: Bottom left (hidden on mobile)
+  { className: "absolute -bottom-6 left-4 md:left-12 hidden sm:block z-20", delay: 2, yOffset: -8, duration: 4.5 },
+  // Slot 3: Top right (hidden on mobile/tablet, visible on desktop)
+  { className: "absolute -top-6 right-4 md:right-12 hidden lg:block z-20", delay: 1.5, yOffset: 8, duration: 4.2 },
+  // Slot 4: Middle left (hidden on tablet/mobile, visible on large desktop)
+  { className: "absolute top-1/2 -translate-y-1/2 -left-8 md:-left-16 hidden xl:block z-20", delay: 0.5, yOffset: -12, duration: 4.8 },
+];
+
 export default function Home() {
   useDocumentTitle('Home');
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [startIndex, setStartIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex((prev) => (prev + 1) % heroProducts.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
@@ -127,53 +158,38 @@ export default function Home() {
               </div>
               
               {/* Floating Cards */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute top-10 -left-6 md:-left-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary-light group-hover:scale-110 transition-transform">
-                    <Building2 size={20} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-white">Raised Floor</div>
-                    <div className="text-xs text-slate-300">Premium Systems</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-20 -right-6 md:-right-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary-light group-hover:scale-110 transition-transform">
-                    <ShieldCheck size={20} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-white">Sports Flooring</div>
-                    <div className="text-xs text-slate-300">Advanced Turf</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 2 }}
-                className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary-light group-hover:scale-110 transition-transform">
-                    <HardHat size={20} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-white">Sandwich Panels</div>
-                    <div className="text-xs text-slate-300">Industrial Grade</div>
-                  </div>
-                </div>
-              </motion.div>
+              {cardSlots.map((slot, index) => {
+                const product = heroProducts[(startIndex + index) % heroProducts.length];
+                const Icon = product.icon;
+                
+                return (
+                  <motion.div
+                    key={`slot-${index}`}
+                    animate={{ y: [0, slot.yOffset, 0] }}
+                    transition={{ repeat: Infinity, duration: slot.duration, ease: "easeInOut", delay: slot.delay }}
+                    className={`${slot.className} bg-white/10 backdrop-blur-md border border-white/20 p-3 md:p-4 rounded-xl shadow-xl hover:shadow-primary/20 transition-all duration-300 group overflow-hidden`}
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={product.id}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${product.color === 'primary' ? 'bg-primary/20 text-primary-light' : 'bg-secondary/20 text-secondary-light'}`}>
+                          <Icon size={20} />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-white whitespace-nowrap">{product.title}</div>
+                          <div className="text-xs text-slate-300 whitespace-nowrap">{product.subtitle}</div>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
               
             </motion.div>
           </div>
