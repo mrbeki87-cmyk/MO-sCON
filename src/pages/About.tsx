@@ -57,7 +57,7 @@ export default function About() {
                 <p>
                   Backed by a team of experienced professionals with strong technical expertise, we collaborate closely with architects, consultants, contractors, government institutions, and private developers to deliver customized solutions that meet the unique demands of every project.
                  At MO'sCON, we believe that every project deserves precision, reliability, and excellence. From consultation and product selection to supply and technical support, we are committed to delivering dependable solutions on time and to the highest standards—ensuring long-term value and complete customer satisfaction.
-
+                </p>
               </div>
             </motion.div>
 
