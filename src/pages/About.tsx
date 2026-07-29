@@ -51,7 +51,8 @@ export default function About() {
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Who We Are</h2>
               <div className="prose prose-lg text-slate-600 max-w-none space-y-4">
                 <p>
-                  MO'sCON Engineering & Trading PLC is a specialized engineering and trading company delivering innovative construction finishing and infrastructure solutions for commercial, institutional, industrial, and sports facilities. We are committed to providing high-quality products and integrated systems that enhance the functionality, durability, and aesthetics of modern buildings
+                 MO'sCON Engineering & Trading PLC is a specialized engineering and trading company providing innovative construction finishing and infrastructure solutions for commercial, institutional, industrial, educational, and sports facilities. We deliver premium products and integrated systems that enhance the functionality, durability, safety, and aesthetics of modern buildings.
+                Our portfolio includes public seating systems, sports infrastructure, raised access flooring, acoustic solutions, data center infrastructure, and other specialized construction finishing products. Through partnerships with internationally recognized manufacturers and leading global suppliers, we provide solutions that meet the highest international standards of quality, performance, and reliability.
                 </p>
                 <p>
                   We serve clients seeking modern, durable, and performance-based finishing systems for commercial, institutional, and industrial buildings in collaboration with manufacturers abroad.
@@ -63,14 +64,14 @@ export default function About() {
               <motion.div variants={fadeIn}>
                 <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Our team combines industry knowledge, technical expertise, and a commitment to excellence. We work closely with architects, consultants, contractors, government institutions, and private developers to deliver tailored solutions with precision, reliability, and a strong focus on quality and client satisfaction.
+                  To be a leading engineering and trading company recognized for delivering innovative, reliable, and sustainable construction finishing and infrastructure solutions that shape modern spaces and exceed client expectations.
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn}>
                 <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  At MO'sCON, we understand that every project demands precision, consistency, and timely execution. We are committed to delivering reliable solutions on schedule without compromising quality, ensuring that every product and service consistently meets the highest standards of performance, safety, and client satisfaction.
+                  To provide high-quality construction finishing and infrastructure solutions through technical excellence, trusted global partnerships, and exceptional customer service. We are committed to delivering innovative products, reliable support, and value-driven solutions that contribute to the success of every project.
                 </p>
               </motion.div>
             </div>
