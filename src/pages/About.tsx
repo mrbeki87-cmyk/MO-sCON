@@ -52,10 +52,14 @@ export default function About() {
               <div className="prose prose-lg text-slate-600 max-w-none space-y-4">
                 <p>
                  MO'sCON Engineering & Trading PLC is a specialized engineering and trading company providing innovative construction finishing and infrastructure solutions for commercial, institutional, industrial, educational, and sports facilities. We deliver premium products and integrated systems that enhance the functionality, durability, safety, and aesthetics of modern buildings.
-                Our portfolio includes public seating systems, sports infrastructure, raised access flooring, acoustic solutions, data center infrastructure, and other specialized construction finishing products. Through partnerships with internationally recognized manufacturers and leading global suppliers, we provide solutions that meet the highest international standards of quality, performance, and reliability.
+                </p>
+                <p>
+                 Our portfolio includes public seating systems, sports infrastructure, raised access flooring, acoustic solutions, data center infrastructure, and other specialized construction finishing products. Through partnerships with internationally recognized manufacturers and leading global suppliers, we provide solutions that meet the highest international standards of quality, performance, and reliability.
                 </p>
                 <p>
                   Backed by a team of experienced professionals with strong technical expertise, we collaborate closely with architects, consultants, contractors, government institutions, and private developers to deliver customized solutions that meet the unique demands of every project.
+                </p>
+                <p>
                  At MO'sCON, we believe that every project deserves precision, reliability, and excellence. From consultation and product selection to supply and technical support, we are committed to delivering dependable solutions on time and to the highest standards—ensuring long-term value and complete customer satisfaction.
                 </p>
               </div>
