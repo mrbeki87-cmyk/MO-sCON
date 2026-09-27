@@ -6,10 +6,9 @@ import { ProductCard } from '../components/ui/ProductCard';
 import { CardSkeleton } from '../components/ui/Skeleton';
 import { supabase } from '../lib/supabase';
 import { type Product } from '../types';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
 
 export default function Products() {
-  useDocumentTitle('Products');
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,6 +34,11 @@ export default function Products() {
 
   return (
     <div className="w-full">
+      <SEO 
+        title="Construction & Infrastructure Solutions in Ethiopia | MO'SCON"
+        description="Explore MO'SCON Engineering & Trading solutions in Ethiopia, including raised access flooring, sports infrastructure, acoustic systems, data center infrastructure, public seating and toilet cubicles."
+        canonicalUrl="https://moscon.et/products"
+      />
       <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
