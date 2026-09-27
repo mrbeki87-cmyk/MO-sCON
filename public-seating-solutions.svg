@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f4f7f9"/>
+  <!-- Row of seats abstract -->
+  <!-- Seat 1 -->
+  <path d="M200 350 L200 250 A 50 50 0 0 1 300 250 L300 350" fill="none" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  <path d="M200 350 L300 350" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  <path d="M250 350 L250 450" stroke="#94a3b8" stroke-width="16"/>
+  <path d="M220 450 L280 450" stroke="#94a3b8" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Seat 2 -->
+  <path d="M350 350 L350 250 A 50 50 0 0 1 450 250 L450 350" fill="none" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  <path d="M350 350 L450 350" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  <path d="M400 350 L400 450" stroke="#94a3b8" stroke-width="16"/>
+  <path d="M370 450 L430 450" stroke="#94a3b8" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Seat 3 -->
+  <path d="M500 350 L500 250 A 50 50 0 0 1 600 250 L600 350" fill="none" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  <path d="M500 350 L600 350" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+  <path d="M550 350 L550 450" stroke="#94a3b8" stroke-width="16"/>
+  <path d="M520 450 L580 450" stroke="#94a3b8" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Connecting beam -->
+  <path d="M150 380 L650 380" stroke="#64748b" stroke-width="16" stroke-linecap="round"/>
+</svg>

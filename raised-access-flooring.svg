@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f4f7f9"/>
+  <!-- Grid of floor tiles -->
+  <g transform="translate(150, 200) skewX(-30)">
+    <rect x="0" y="0" width="100" height="100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="100" y="0" width="100" height="100" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="200" y="0" width="100" height="100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="300" y="0" width="100" height="100" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+    
+    <rect x="0" y="100" width="100" height="100" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="100" y="100" width="100" height="100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="200" y="100" width="100" height="100" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="300" y="100" width="100" height="100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    
+    <rect x="0" y="200" width="100" height="100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="100" y="200" width="100" height="100" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="200" y="200" width="100" height="100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="300" y="200" width="100" height="100" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+  </g>
+  <!-- Supports / Pedestals under tiles -->
+  <rect x="160" y="440" width="10" height="60" fill="#64748b"/>
+  <rect x="145" y="490" width="40" height="10" fill="#475569"/>
+  <rect x="280" y="440" width="10" height="60" fill="#64748b"/>
+  <rect x="265" y="490" width="40" height="10" fill="#475569"/>
+  <rect x="400" y="440" width="10" height="60" fill="#64748b"/>
+  <rect x="385" y="490" width="40" height="10" fill="#475569"/>
+  <rect x="520" y="440" width="10" height="60" fill="#64748b"/>
+  <rect x="505" y="490" width="40" height="10" fill="#475569"/>
+</svg>
