@@ -6,14 +6,58 @@ import { CheckCircle2, ArrowLeft, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { type Product } from '../types';
 import { LazyImage } from '../components/ui/LazyImage';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
+
+const getProductSEOMeta = (slug: string, originalTitle: string) => {
+  switch (slug) {
+    case 'raised-access-flooring':
+      return {
+        title: "Raised Access Flooring in Ethiopia | MO'SCON Engineering",
+        description: "Raised access flooring systems in Ethiopia for data centers, offices, control rooms and mission-critical facilities. Explore MO'SCON's modular flooring solutions."
+      };
+    case 'sports-infrastructure-solution':
+      return {
+        title: "Sports Infrastructure Solutions in Ethiopia | MO'SCON",
+        description: "Sports infrastructure solutions in Ethiopia including athletic tracks, multi-sport courts, artificial turf and high-performance sports surfaces."
+      };
+    case 'sports-equipment-field-systems':
+      return {
+        title: "Sports Equipment & Field Systems in Ethiopia | MO'SCON",
+        description: "Professional sports equipment and field systems for athletics, stadiums, schools, universities, sports clubs and training facilities in Ethiopia."
+      };
+    case 'acoustic-solutions':
+      return {
+        title: "Acoustic Ceiling & Wall Solutions in Ethiopia | MO'SCON",
+        description: "Acoustic ceilings, wall cladding, soundproofing and partition solutions for offices, auditoriums, studios, healthcare facilities and commercial spaces in Ethiopia."
+      };
+    case 'data-center-infrastructure':
+      return {
+        title: "Data Center Infrastructure Solutions in Ethiopia | MO'SCON",
+        description: "Data center infrastructure solutions including raised flooring, suspended ceilings, containment and cable management systems for mission-critical facilities."
+      };
+    case 'public-seating-solutions':
+      return {
+        title: "Public & Stadium Seating Solutions in Ethiopia | MO'SCON",
+        description: "Durable public seating solutions for stadiums, sports arenas, auditoriums, theaters, educational institutions and public facilities in Ethiopia."
+      };
+    case 'toilet-cubicles':
+    case 'toilet-partition':
+      return {
+        title: "HPL Toilet Cubicles & Partitions in Ethiopia | MO'SCON",
+        description: "Commercial toilet cubicles and washroom partition systems in Ethiopia. High-quality HPL toilet partitions for public and commercial facilities."
+      };
+    default:
+      return {
+        title: `${originalTitle} in Ethiopia | MO'SCON`,
+        description: `Explore ${originalTitle} solutions by MO'SCON Engineering & Trading in Ethiopia.`
+      };
+  }
+};
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  useDocumentTitle(product ? product.title : 'Loading Product...');
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,8 +93,41 @@ export default function ProductDetail() {
     return <Navigate to="/404" replace />;
   }
 
+  const seoMeta = getProductSEOMeta(product.slug, product.title);
+  
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://moscon.et/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://moscon.et/products"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.title,
+        "item": `https://moscon.et/products/${product.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-slate-50 min-h-screen pb-24">
+      <SEO 
+        title={seoMeta.title}
+        description={seoMeta.description}
+        canonicalUrl={`https://moscon.et/products/${product.slug}`}
+        structuredData={breadcrumbData}
+      />
       <section className="relative h-[60vh] min-h-[500px] flex items-end pt-32 pb-16">
         <div className="absolute inset-0 z-0 bg-slate-900">
           {product.img && (
