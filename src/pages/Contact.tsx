@@ -12,7 +12,7 @@ import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { fadeIn } from '../lib/animations';
 import { submitContactInquiry, type ContactFormData } from '../services/contact.service';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
 import { useCompanySettings } from '../hooks/useCompanySettings';
 
 const contactSchema = z.object({
@@ -25,7 +25,6 @@ const contactSchema = z.object({
 });
 
 export default function Contact() {
-  useDocumentTitle('Contact Us');
   const [searchParams] = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: settings } = useCompanySettings();
@@ -64,6 +63,11 @@ export default function Contact() {
 
   return (
     <div className="w-full">
+      <SEO 
+        title="Contact MO'SCON | Engineering Solutions in Ethiopia"
+        description="Get in touch with MO'SCON Engineering & Trading PLC for quotes, consultations, or inquiries regarding our finishing solutions and infrastructure services."
+        canonicalUrl="https://moscon.et/contact"
+      />
       <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
