@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f4f7f9"/>
+  <!-- Field lines abstract -->
+  <rect x="150" y="150" width="500" height="300" fill="#10b981" rx="10"/>
+  <rect x="160" y="160" width="480" height="280" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <line x1="400" y1="160" x2="400" y2="440" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="400" cy="300" r="50" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <!-- Goal area abstract -->
+  <rect x="160" y="220" width="60" height="160" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <rect x="580" y="220" width="60" height="160" fill="none" stroke="#ffffff" stroke-width="4"/>
+</svg>
