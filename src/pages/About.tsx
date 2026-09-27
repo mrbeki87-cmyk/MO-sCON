@@ -1,12 +1,16 @@
 import { motion } from 'framer-motion';
 import { Section } from '../components/ui/Section';
 import { fadeIn, staggerContainer } from '../lib/animations';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
 
 export default function About() {
-  useDocumentTitle('About Us');
   return (
     <div className="w-full">
+      <SEO 
+        title="About MO'SCON | Engineering & Trading Company in Ethiopia"
+        description="Learn about MO'SCON Engineering & Trading PLC, a specialized engineering company delivering innovative construction finishing and infrastructure solutions in Ethiopia."
+        canonicalUrl="https://moscon.et/about"
+      />
       <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
