@@ -9,7 +9,7 @@ import { CardSkeleton } from '../components/ui/Skeleton';
 import { staggerContainer, fadeIn, slideUp } from '../lib/animations';
 import { supabase } from '../lib/supabase';
 import { type Product } from '../types';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { SEO } from '../components/SEO';
 
 const heroProducts = [
   { id: 'public-seating', title: 'Public Seating', subtitle: 'Premium Comfort', icon: Users, color: 'primary' },
@@ -35,7 +35,34 @@ const cardSlots = [
 ];
 
 export default function Home() {
-  useDocumentTitle('Home');
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MO'SCON Engineering & Trading",
+      "url": "https://moscon.et/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MO'SCON Engineering & Trading",
+      "url": "https://moscon.et/",
+      "logo": "https://moscon.et/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+251 935 199 119",
+        "contactType": "customer service",
+        "email": "moscon.engineering@gmail.com"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kirkos Sub-city, W.10, H.No 918/79",
+        "addressLocality": "Addis Ababa",
+        "addressCountry": "ET"
+      }
+    }
+  ];
+
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
@@ -70,6 +97,12 @@ export default function Home() {
 
   return (
     <div className="w-full">
+      <SEO 
+        title="MO'SCON Engineering & Trading | Engineering Solutions in Ethiopia"
+        description="MO'SCON Engineering & Trading provides advanced construction finishing, raised access flooring, sports infrastructure, acoustic solutions, data center infrastructure and public seating solutions in Ethiopia."
+        canonicalUrl="https://moscon.et/"
+        structuredData={structuredData}
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-slate-950 overflow-hidden pt-24 pb-12 lg:pt-32 lg:pb-24">
         {/* Background Patterns */}
